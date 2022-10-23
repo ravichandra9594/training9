@@ -17,13 +17,15 @@ read choice;
 case "$choice" in
 	'1')
 		echo "Memory Status Is:\n";
-		freeMem=$(free -m | awk '/Mem/ {print $3/$2*100}';
+		freeMem=$(free -m | awk '/Mem/ {print $3/$2*100}');
+		
+		
 
-		if [ "$freeMem" -le 30 ]
+		if [ $(bc -l "$freeMem") -le 30 ]
 		then
-			echo "Memory is less than 30%";
+			echo "Memory is less than 30";
 		else
-			echo "Memory is greater than 30%";
+			echo "Memory is greater than 30";
 		fi
 
 		;;
